@@ -11,8 +11,14 @@ function createWindow () {
       preload: path.join(__dirname, 'preload.js')
     }
   })
-
-  mainWindow.loadURL('https://www.bing.com')
+  console.log(`Arguments (${process.argv.length}): ${process.argv}`);
+  var url = 'https://www.bing.com';
+  if(process.argv.length === 2)
+  {
+    url = process.argv[1];
+  }
+  console.log(`Loading ${url}`);
+  mainWindow.loadURL(url);
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
